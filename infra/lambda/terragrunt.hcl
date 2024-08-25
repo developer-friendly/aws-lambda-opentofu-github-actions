@@ -1,3 +1,7 @@
+include "root" {
+  path = find_in_parent_folders()
+}
+
 inputs = {
   api_gateway_rest_api_id            = dependency.gtw.outputs.api_gateway_rest_api_id
   api_gateway_resource_id            = dependency.gtw.outputs.api_gateway_resource_id

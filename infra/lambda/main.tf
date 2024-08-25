@@ -1,3 +1,7 @@
+locals {
+  function_name = "hello_world"
+}
+
 data "archive_file" "lambda_zip" {
   type        = "zip"
   source_dir  = "${path.module}/../../application"
@@ -28,7 +32,7 @@ resource "aws_iam_role" "lambda_role" {
 
 resource "aws_lambda_function" "this" {
   filename         = data.archive_file.lambda_zip.output_path
-  function_name    = "hello_world"
+  function_name    = local.function_name
   role             = aws_iam_role.lambda_role.arn
   handler          = "index.handler"
   runtime          = "nodejs20.x"
@@ -65,4 +69,9 @@ resource "aws_api_gateway_deployment" "deployment" {
   depends_on = [
     aws_api_gateway_integration.this,
   ]
+}
+
+resource "aws_cloudwatch_log_group" "lambda_log_group" {
+  name              = "/aws/lambda/${local.function_name}"
+  retention_in_days = 7
 }

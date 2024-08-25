@@ -1,8 +1,11 @@
 {
+  "name": "hello-world",
+  "module": "index.js",
+  "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
   },
-  "module": "index.js",
-  "name": "hello_world",
-  "type": "module"
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
 }

@@ -181,3 +181,5 @@ terraform.rc
 
 tfplan
 *.zip
+backend.tf
+.secrets

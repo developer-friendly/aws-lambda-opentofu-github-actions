@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "module": "index.js",
+  "name": "hello_world",
+  "type": "module"
+}

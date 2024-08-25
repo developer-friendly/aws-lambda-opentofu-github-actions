@@ -9,6 +9,7 @@ terraform {
       version = "~> 6.2"
     }
   }
+  required_version = "< 2"
 }
 
 provider "github" {

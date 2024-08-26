@@ -5,8 +5,8 @@ on:
       - main
 
 env:
-  tf_version: 1.5.7
-  tg_version: 0.53.0
+  tofu_version: 1.8.1
+  tg_version: 0.66.9
   working_dir: infra/lambda
   TF_PLUGIN_CACHE_DIR: ${{ github.workspace }}/.terraform.d/plugin-cache
 

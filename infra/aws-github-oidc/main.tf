@@ -28,12 +28,13 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
-data "aws_iam_policy_document" "lambda_policy" {
+data "aws_iam_policy_document" "iam_policy" {
   statement {
     actions = [
       "lambda:PublishLayerVersion",
       "lambda:UpdateFunctionCode",
       "lambda:UpdateFunctionConfiguration",
+      "logs:CreateLogGroup",
     ]
     effect    = "Allow"
     resources = ["*"]
@@ -53,7 +54,7 @@ resource "aws_iam_role" "this" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 
   inline_policy {
-    name   = "lambda_policy"
-    policy = data.aws_iam_policy_document.lambda_policy.json
+    name   = "iam-policy"
+    policy = data.aws_iam_policy_document.iam_policy.json
   }
 }

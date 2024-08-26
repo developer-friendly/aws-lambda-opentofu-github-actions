@@ -24,12 +24,20 @@ resource "github_repository_environment" "this" {
   }
 }
 
-resource "github_actions_environment_secret" "this" {
+resource "github_actions_environment_secret" "iam_role" {
   repository = "aws-lambda-opentofu-github-actions"
 
   environment     = github_repository_environment.this.environment
   secret_name     = "AWS_IAM_ROLE"
   plaintext_value = var.aws_iam_role
+}
+
+resource "github_actions_environment_secret" "terraform_cloud_token" {
+  repository = "aws-lambda-opentofu-github-actions"
+
+  environment     = github_repository_environment.this.environment
+  secret_name     = "TF_TOKEN_app_terraform_io"
+  plaintext_value = var.terraform_cloud_token
 }
 
 resource "github_actions_environment_variable" "this" {

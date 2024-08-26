@@ -7,3 +7,10 @@ variable "environment_name" {
   type     = string
   nullable = false
 }
+
+variable "terraform_cloud_token" {
+  type        = string
+  description = "The token to authenticate with Terraform Cloud"
+  sensitive   = true
+  nullable    = false
+}

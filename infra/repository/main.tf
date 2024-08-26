@@ -1,14 +1,20 @@
-data "github_user" "current" {
-  username = ""
+data "aws_region" "current" {}
+
+resource "github_branch_protection" "this" {
+  repository_id = "aws-lambda-opentofu-github-actions"
+
+  pattern          = "main"
+  enforce_admins   = true
+  allows_deletions = false
+
+  force_push_bypassers = [
+    "/meysam81",
+  ]
 }
 
 resource "github_repository_environment" "this" {
-  environment = "prod"
+  environment = var.environment_name
   repository  = "aws-lambda-opentofu-github-actions"
-
-  reviewers {
-    users = [data.github_user.current.id]
-  }
 
   prevent_self_review = false
 
@@ -24,4 +30,12 @@ resource "github_actions_environment_secret" "this" {
   environment     = github_repository_environment.this.environment
   secret_name     = "AWS_IAM_ROLE"
   plaintext_value = var.aws_iam_role
+}
+
+resource "github_actions_environment_variable" "this" {
+  repository  = "aws-lambda-opentofu-github-actions"
+  environment = var.environment_name
+
+  variable_name = "AWS_REGION"
+  value         = data.aws_region.current.name
 }

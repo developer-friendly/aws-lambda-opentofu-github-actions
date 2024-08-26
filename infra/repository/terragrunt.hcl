@@ -3,7 +3,8 @@ include "root" {
 }
 
 inputs = {
-  aws_iam_role = dependency.github_oidc.outputs.role_arn
+  aws_iam_role     = dependency.github_oidc.outputs.role_arn
+  environment_name = dependency.github_oidc.outputs.environment_name
 }
 
 dependency "github_oidc" {

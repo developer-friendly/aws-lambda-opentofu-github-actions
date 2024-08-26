@@ -43,6 +43,10 @@ resource "aws_lambda_function" "this" {
       ENV = "prod"
     }
   }
+
+  depends_on = [
+    aws_cloudwatch_log_group.lambda_log_group,
+  ]
 }
 
 resource "aws_api_gateway_integration" "this" {

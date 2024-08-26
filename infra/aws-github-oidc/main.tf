@@ -35,6 +35,7 @@ data "aws_iam_policy_document" "iam_policy" {
       "lambda:UpdateFunctionCode",
       "lambda:UpdateFunctionConfiguration",
       "logs:CreateLogGroup",
+      "logs:PutRetentionPolicy",
     ]
     effect    = "Allow"
     resources = ["*"]

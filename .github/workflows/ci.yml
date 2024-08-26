@@ -37,8 +37,7 @@ jobs:
       - name: Deploy
         uses: gruntwork-io/terragrunt-action@v2
         env:
-          INPUT_PRE_EXEC_1: |
-            echo "TF_TOKEN_app_terraform_io=${{ secrets.TF_TOKEN_app_terraform_io }}" >> $GITHUB_ENV
+          TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
         with:
           tf_version: ${{ env.tf_version }}
           tg_version: ${{ env.tg_version }}

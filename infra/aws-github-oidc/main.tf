@@ -31,10 +31,30 @@ data "aws_iam_policy_document" "assume_role" {
 data "aws_iam_policy_document" "iam_policy" {
   statement {
     actions = [
+      "apigateway:DELETE",
+      "apigateway:GET",
+      "apigateway:POST",
+      "apigateway:PUT",
+      "iam:AttachRolePolicy",
+      "iam:CreateRole",
+      "iam:DeleteRolePolicy",
+      "iam:DetachRolePolicy",
+      "iam:GetRole",
+      "iam:PassRole",
+      "iam:PutRolePolicy",
+      "lambda:AddPermission",
+      "lambda:CreateFunction",
+      "lambda:DeleteFunction",
+      "lambda:GetFunction",
       "lambda:PublishLayerVersion",
+      "lambda:RemovePermission",
       "lambda:UpdateFunctionCode",
       "lambda:UpdateFunctionConfiguration",
       "logs:CreateLogGroup",
+      "logs:DeleteLogGroup",
+      "logs:DeleteRetentionPolicy",
+      "logs:DescribeLogGroups",
+      "logs:ListTagsForResource",
       "logs:PutRetentionPolicy",
     ]
     effect    = "Allow"

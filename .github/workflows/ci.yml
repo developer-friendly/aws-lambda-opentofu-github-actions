@@ -28,7 +28,7 @@ jobs:
         with:
           path: ${{ env.TF_PLUGIN_CACHE_DIR }}
           key: ${{ runner.os }}-terraform-plugin-cache-${{ hashFiles('**/.terraform.lock.hcl') }}
-      - name: configure aws credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_IAM_ROLE }}
@@ -39,7 +39,7 @@ jobs:
         env:
           TF_TOKEN_app_terraform_io: ${{ secrets.TF_TOKEN_app_terraform_io }}
         with:
-          tf_version: ${{ env.tf_version }}
+          tofu_version: ${{ env.tofu_version }}
           tg_version: ${{ env.tg_version }}
           tg_dir: ${{ env.working_dir }}
           tg_command: apply

@@ -25,7 +25,8 @@ async function routeHandler(event, context) {
       return await index();
     case "/_POST":
       var body = JSON.parse(event.body);
-      return await greet(body.name);
+      const name = body.name || "Friend";
+      return await greet(name);
     default:
       return {
         statusCode: 404,

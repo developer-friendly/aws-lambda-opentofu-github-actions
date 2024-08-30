@@ -15,9 +15,9 @@ async function greet(name) {
 }
 
 async function routeHandler(event, context) {
-  const { pathRaw, httpMethod } = event;
+  var { path, httpMethod } = event;
   const pathPrefix = process.env.PATH_PREFIX || "/hello";
-  const path = pathRaw.replace(pathPrefix, "") || "/";
+  path = path.replace(pathPrefix, "") || "/";
   const routeKey = `${path}_${httpMethod}`;
 
   switch (routeKey) {

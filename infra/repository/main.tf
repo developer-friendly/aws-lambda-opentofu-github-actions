@@ -1,3 +1,4 @@
+data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 resource "github_branch_protection" "this" {
@@ -46,4 +47,12 @@ resource "github_actions_environment_variable" "this" {
 
   variable_name = "AWS_REGION"
   value         = data.aws_region.current.name
+}
+
+resource "github_actions_environment_secret" "aws_account_id" {
+  repository = "aws-lambda-opentofu-github-actions"
+
+  environment     = github_repository_environment.this.environment
+  secret_name     = "AWS_ACCOUNT_ID"
+  plaintext_value = data.aws_caller_identity.current.account_id
 }

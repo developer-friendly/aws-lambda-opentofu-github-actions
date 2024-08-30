@@ -3,6 +3,10 @@ init:
   terragrunt init -upgrade
 
 [no-cd]
+validate:
+  tofu validate
+
+[no-cd]
 plan:
   terragrunt plan -out tfplan
 

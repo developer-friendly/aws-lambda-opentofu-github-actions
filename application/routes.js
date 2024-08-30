@@ -22,10 +22,10 @@ async function routeHandler(event, context) {
 
   switch (routeKey) {
     case "/_GET":
-      return index();
+      return await index();
     case "/_POST":
       var body = JSON.parse(event.body);
-      return greet(body.name);
+      return await greet(body.name);
     default:
       return {
         statusCode: 404,

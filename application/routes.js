@@ -39,6 +39,8 @@ export default async function route(event, context) {
   try {
     return await routeHandler(event, context);
   } catch (error) {
+    console.log(error);
+
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },

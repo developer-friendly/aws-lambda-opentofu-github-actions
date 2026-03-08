@@ -22,7 +22,7 @@ jobs:
     environment: prod
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Create Terraform Plugin Cache Dir
         run: mkdir -p $TF_PLUGIN_CACHE_DIR
       - name: Terraform Plugin Cache
